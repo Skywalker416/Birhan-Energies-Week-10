@@ -1,157 +1,83 @@
-# AI Mastery: Fraud Detection Challenge (Week 8 & 9)
+# Change Point Analysis and Statistical Modeling of Brent Oil Prices
 
 ## Project Overview
+This project analyzes **Brent oil price fluctuations** over time by detecting key change points and applying statistical modeling. The goal is to understand how major events (e.g., geopolitical crises, OPEC policy changes) impact oil prices and provide insights for investors, policymakers, and energy companies.
 
-This project is aimed at improving the detection of fraud in e-commerce and bank transactions. The task involved performing data analysis, building and training machine learning models, ensuring model explainability, deploying models via an API, and creating a dashboard for visualizing fraud insights.
+## Objectives
+- **Perform Exploratory Data Analysis (EDA)**
+- **Detect significant price change points using PELT algorithm**
+- **Apply ARIMA model for time series forecasting**
+- **Provide data-driven insights for decision-makers**
 
-### Tasks Covered
+## Directory Structure
+```
+Brent_Oil_Analysis/
+│-- data/
+│   ├── BrentOilPrices.csv  # Raw dataset
+│   ├── BrentOilPrices_Cleaned.csv  # Processed dataset
+│-- notebooks/
+│   ├── EDA.ipynb  # Exploratory Data Analysis
+│   ├── ChangePointAnalysis.ipynb  # Change point detection
+│   ├── TimeSeriesModeling.ipynb  # Forecasting Brent oil prices
+│-- scripts/
+│   ├── data_preprocessing.py  # Data loading & preprocessing
+│   ├── change_point_detection.py  # Detecting key events affecting prices
+│   ├── model_training.py  # ARIMA time series forecasting
+│-- reports/
+│   ├── analysis_report.pdf  # Summary of findings
+│-- README.md  # Project documentation
+```
 
-- **Data Analysis and Preprocessing**
-- **Model Building and Training**
-- **Model Explainability using SHAP and LIME**
-- **Model Deployment using Flask & Docker**
-- **Building a Dashboard using Flask and Dash**
+## Installation & Setup
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-repo/Brent_Oil_Analysis.git
+   cd Brent_Oil_Analysis
+   ```
+2. Create a virtual environment and install dependencies:
+   ```sh
+   python -m venv env
+   source env/bin/activate  # On Windows: env\Scripts\activate
+   pip install -r requirements.txt
+   ```
+3. Run scripts as needed:
+   - **Data Preprocessing:** `python scripts/data_preprocessing.py`
+   - **Change Point Detection:** `python scripts/change_point_detection.py`
+   - **Model Training:** `python scripts/model_training.py`
 
-## Table of Contents
+## Implementation Details
 
-1. [Data Analysis and Preprocessing](#data-analysis-and-preprocessing)
-2. [Model Building and Training](#model-building-and-training)
-3. [Model Explainability](#model-explainability)
-4. [Model Deployment and API Development](#model-deployment-and-api-development)
-5. [Dashboard with Flask and Dash](#dashboard-with-flask-and-dash)
-6. [References](#references)
-7. [Installation](#installation)
+### 1. Data Preprocessing (`data_preprocessing.py`)
+- Converts the `Date` column to datetime format.
+- Sorts and cleans the data.
+- Saves the cleaned dataset as `BrentOilPrices_Cleaned.csv`.
 
-## Data Analysis and Preprocessing
+### 2. Exploratory Data Analysis (`EDA.ipynb`)
+- Visualizes Brent oil price trends over time.
+- Performs **Augmented Dickey-Fuller (ADF) test** to check stationarity.
 
-1. **Handling Missing Values**:  
-   - Imputed or dropped missing values.
+### 3. Change Point Detection (`change_point_detection.py`)
+- Uses **PELT algorithm** (`ruptures` library) to detect structural breaks in price trends.
+- Plots detected change points.
 
-2. **Data Cleaning**:  
-   - Removed duplicates.  
-   - Corrected data types.
+### 4. Time Series Forecasting (`model_training.py`)
+- Implements **ARIMA model** to predict future oil prices.
+- Plots historical vs. forecasted prices.
 
-3. **Exploratory Data Analysis (EDA)**:  
-   - Univariate and bivariate analysis.
+## Results & Insights
+1. **Change Point Analysis** identified major price shifts linked to **geopolitical events and economic policies**.
+2. **ARIMA Forecasting** provided potential future price trends.
+3. The project delivers **data-driven insights** for energy market stakeholders.
 
-4. **Geolocation Analysis**:  
-   - Converted IP addresses to integer format.  
-   - Merged `Fraud_Data.csv` with `IpAddress_to_Country.csv`.
+## Future Work
+- Implement **GARCH models** for volatility analysis.
+- Extend the dataset with **economic indicators (inflation, interest rates, etc.)**.
+- Build a **real-time dashboard** for better visualization.
 
-5. **Feature Engineering**:  
-   - Transaction frequency and velocity for `Fraud_Data.csv`.  
-   - Time-based features: `hour_of_day`, `day_of_week`.
+## Contributors
+- **Your Name** - Lead Developer
 
-6. **Normalization and Scaling**:  
-   - Applied normalization and scaling techniques.
+## License
+This project is licensed under the MIT License.
 
-7. **Encode Categorical Features**:  
-   - Converted categorical features using encoding techniques.
-
-## Model Building and Training
-
-- **Data Preparation**:  
-  - Separated features and target.  
-  - Split the dataset into train and test sets.
-
-- **Model Selection**:  
-  Used various models and compared their performance:  
-  - Logistic Regression  
-  - Decision Tree  
-  - Random Forest  
-  - Gradient Boosting  
-  - Multi-Layer Perceptron (MLP)  
-  - Convolutional Neural Network (CNN)  
-  - Recurrent Neural Network (RNN)  
-  - Long Short-Term Memory (LSTM)
-
-- **Model Training & Evaluation**:  
-  - Trained and evaluated models using cross-validation.
-
-- **MLOps**:  
-  - Implemented experiment tracking and model versioning using MLflow.
-
-## Model Explainability
-
-- **SHAP (Shapley Additive exPlanations)**:  
-  - Used SHAP to explain model predictions.  
-  - Visualized feature importance with SHAP plots:  
-    - Summary plot  
-    - Force plot  
-    - Dependence plot
-
-- **LIME (Local Interpretable Model-agnostic Explanations)**:  
-  - Used LIME for local model interpretability.  
-  - Created LIME plots for individual prediction explanations.
-
-## Model Deployment and API Development
-
-- **Flask API**:  
-  - Created a Flask application to serve the fraud detection model.  
-  - Defined necessary API endpoints.
-
-- **Dockerization**:  
-  - Dockerized the Flask application for deployment.  
-  - Dockerfile example:
-
-    ```Dockerfile
-    FROM python:3.8-slim
-    WORKDIR /app
-    COPY . .
-    RUN pip install -r requirements.txt
-    EXPOSE 5000
-    CMD ["python", "serve_model.py"]
-    ```
-
-- **API Testing**:  
-  - Ran tests to ensure API endpoints return expected results.
-
-- **Logging**:  
-  - Integrated Flask-Logging to track requests, errors, and predictions.
-
-## Dashboard with Flask and Dash
-
-- **Flask Endpoint**:  
-  - Served fraud data and statistics via Flask API.
-
-- **Dash Visualization**:  
-  - Developed interactive dashboard for fraud detection insights:
-    - Total transactions, fraud cases, and fraud percentages.
-    - Line chart displaying fraud cases over time.
-    - Geolocation fraud analysis.
-    - Bar chart comparing fraud cases across devices and browsers.
-
-## References
-
-1. [Kaggle - Credit Card Fraud Detection Dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
-2. [Kaggle - IEEE Fraud Detection](https://www.kaggle.com/c/ieee-fraud-detection/code)
-3. [Kaggle - Fraud E-Commerce Dataset](https://www.kaggle.com/datasets/vbinh002/fraud-ecommerce/code)
-4. [Fraud Detection Overview](https://complyadvantage.com/insights/what-is-fraud-detection/)
-5. [MLflow](https://www.mlflow.org/)
-6. [SHAP Documentation](https://github.com/slundberg/shap)
-7. [LIME Documentation](https://github.com/marcotcr/lime)
-
-## Installation
-
-### Requirements
-
-- Python 3.8+
-- Flask
-- Dash
-- MLflow
-- SHAP
-- LIME
-- Docker
-
-### Steps to Install
-
-1. Clone this repository:
-
-   ```bash
-   git clone https://github.com/ab3lT/10-Academy-Week-8
-   cd 10-Academy-Week-8
-
-
-2. Install dependencies:
-
-   ```pip install -r requirements.txt```
+---
