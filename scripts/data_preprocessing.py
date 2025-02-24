@@ -1,19 +1,24 @@
 import pandas as pd
 
-# Load the dataset
-file_path = "data/BrentOilPrices.csv"
-df = pd.read_csv(file_path)
+def load_and_clean_data(oil_price_path, economic_data_path=None):
+    # Load oil prices dataset
+    df = pd.read_csv(oil_price_path, parse_dates=['Date'], dayfirst=True)
+    df = df.rename(columns={'Price': 'Brent_Oil_Price'})
+    df = df.sort_values('Date').reset_index(drop=True)
+    
+    # Handle missing values
+    df = df.dropna()
 
-# Convert 'Date' column to datetime format
-df['Date'] = pd.to_datetime(df['Date'], format='%d-%b-%y')
+    if economic_data_path:
+        # Load economic indicators (if available)
+        econ_df = pd.read_csv(economic_data_path, parse_dates=['Date'], dayfirst=True)
+        
+        # Merge datasets on Date
+        df = pd.merge(df, econ_df, on='Date', how='left')
 
-# Sort data by date
-df = df.sort_values(by='Date')
+    return df
 
-# Check for missing values
-df = df.dropna()
-
-# Save cleaned data
-df.to_csv("data/BrentOilPrices_Cleaned.csv", index=False)
-
-print("Data preprocessing complete. Cleaned dataset saved.")
+if __name__ == "__main__":
+    data = load_and_clean_data('data/BrentOilPrices.csv', 'data/economic_factors.csv')
+    data.to_csv('data/BrentOilPrices_Cleaned.csv', index=False)
+    print("Data preprocessing complete. Cleaned file saved.")
