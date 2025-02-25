@@ -72,12 +72,12 @@ This project analyzes **Brent oil price fluctuations** over time by detecting ke
 
 ### 🔧 Running the Project
 #### Backend
-
+```sh
 cd backend
 pip install -r requirements.txt
 python app.py
 ---
-
+```
 ## 📂 **Project Structure**  
 
 ```plaintext
