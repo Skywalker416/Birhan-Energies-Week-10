@@ -160,7 +160,7 @@ BrentOilPriceAnalysis/
 - Build a **real-time dashboard** for better visualization.
 
 ## Contributors
-- **Your Name** - Lead Developer
+- Amanuel Legesse - Lead Developer
 
 ## License
 This project is licensed under the MIT License.
