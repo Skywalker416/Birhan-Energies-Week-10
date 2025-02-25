@@ -9,6 +9,74 @@ This project analyzes **Brent oil price fluctuations** over time by detecting ke
 - **Apply ARIMA model for time series forecasting**
 - **Provide data-driven insights for decision-makers**
 
+
+---
+
+## ✅ Task 1: Data Analysis & Understanding
+### 📊 Workflow & Data Understanding
+- **Dataset**: Historical Brent oil prices (May 1987 - Sept 2022).
+- **Preprocessing**: Cleaned missing values and normalized date format.
+- **Exploratory Data Analysis (EDA)**:
+  - Trends and seasonality examined.
+  - Price distributions visualized.
+- **Time Series Modeling**:
+  - ARIMA (forecasting).
+  - GARCH (volatility analysis).
+  - LSTM (deep learning).
+
+### 🔍 Understanding Models
+- **ARIMA**: Captures trend and seasonality in time series.
+- **GARCH**: Detects price volatility and risk.
+- **LSTM**: Uses neural networks to model long-term dependencies.
+
+---
+
+## 📊 Task 2: Advanced Statistical Analysis & Machine Learning
+### 📈 Additional Models & Techniques
+- **VAR (Vector Autoregression)**: Multivariate time series analysis.
+- **Markov-Switching ARIMA**: Identifies market condition shifts.
+- **LSTM**: Captures non-linear dependencies in oil price movement.
+
+### 🌎 External Influences on Oil Prices
+- **Economic Indicators**: GDP, inflation, unemployment, exchange rates.
+- **Technological Innovations**: Fracking, renewable energy impact.
+- **Political & Regulatory Factors**: OPEC policies, trade sanctions.
+
+### 🏆 Model Validation
+- **Backtesting**: Assesses model accuracy on past data.
+- **Performance Metrics**: RMSE, MAE, R².
+
+---
+
+## 📊 Task 3: Interactive Dashboard Development
+### 🛠 Backend (Flask)
+- **API Endpoints**:
+  - `/api/prices`: Serves historical price data.
+  - `/api/events`: Provides significant global events.
+  - `/api/forecast`: Returns future price predictions.
+
+### 💻 Frontend (React)
+- **Visualizations**:
+  - Interactive line charts for oil prices.
+  - Event markers highlighting historical impacts.
+- **User Controls**:
+  - Date range filters.
+  - Event comparison tools.
+
+---
+
+## 🚀 Installation & Execution
+### ✅ Prerequisites
+- **Backend**: Python 3.8+, Flask, Pandas, Scikit-learn.
+- **Frontend**: Node.js 14+, React, Recharts.
+
+### 🔧 Running the Project
+#### Backend
+```sh
+cd backend
+pip install -r requirements.txt
+python app.py
+
 ## Directory Structure
 ```
 Brent_Oil_Analysis/
