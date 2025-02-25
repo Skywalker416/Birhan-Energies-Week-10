@@ -76,24 +76,43 @@ This project analyzes **Brent oil price fluctuations** over time by detecting ke
 cd backend
 pip install -r requirements.txt
 python app.py
+---
 
-## Directory Structure
-```
-Brent_Oil_Analysis/
-│-- data/
-│   ├── BrentOilPrices.csv  # Raw dataset
-│   ├── BrentOilPrices_Cleaned.csv  # Processed dataset
-│-- notebooks/
-│   ├── EDA.ipynb  # Exploratory Data Analysis
-│   ├── ChangePointAnalysis.ipynb  # Change point detection
-│   ├── TimeSeriesModeling.ipynb  # Forecasting Brent oil prices
-│-- scripts/
-│   ├── data_preprocessing.py  # Data loading & preprocessing
-│   ├── change_point_detection.py  # Detecting key events affecting prices
-│   ├── model_training.py  # ARIMA time series forecasting
-│-- reports/
-│   ├── analysis_report.pdf  # Summary of findings
-│-- README.md  # Project documentation
+---
+
+## 📂 **Project Structure**  
+
+```plaintext
+BrentOilPriceAnalysis/
+├── backend/
+│   ├── app.py
+│   ├── data_processing.py
+│   ├── models.py
+│   ├── requirements.txt
+│   └── venv/
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   ├── App.js
+│   │   └── ...
+│   ├── package.json
+│   └── node_modules/
+├── notebooks/
+│   ├── eda.ipynb
+│   ├── changepoint_detection.ipynb
+│   ├── model_training.ipynb
+├── data/
+│   ├── raw/
+│   │   └── BrentOilPrices.csv
+│   ├── processed/
+│   │   └── BrentOilPrices_Cleaned.csv
+├── scripts/
+│   ├── data_preprocessing.py
+│   ├── change_point_detection.py
+│   └── model_training.py
+└── README.md
 ```
 
 ## Installation & Setup
